@@ -5,8 +5,9 @@
 from os.path import exists
 from fabric.api import put, sudo, env
 from datetime import datetime
-env.host = ["35.231.170.166", "54.83.91.228"]
-
+import logging
+env.hosts = ["35.231.170.166", "54.83.91.228"]
+logging.raiseExceptions=False
 
 def do_deploy(archive_path):
     """function do_deploy"""
