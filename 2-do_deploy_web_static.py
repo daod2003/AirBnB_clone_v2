@@ -2,7 +2,7 @@
 # Fabric script (based on the file 1-pack_web_static.py) that distributes
 # an archive to your web servers, using the function do_deploy
 
-from os.path import path
+from os.path import exists
 from fabric.api import put, run, env
 from datetime import datetime
 env.host = ['35.231.170.166', '54.83.91.228']
