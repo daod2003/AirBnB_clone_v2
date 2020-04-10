@@ -2,10 +2,27 @@
 # Fabric script (based on the file 1-pack_web_static.py) that distributes
 # an archive to your web servers, using the function do_deploy
 
-from os.path import exists
-from fabric.api import put, sudo, env
+from os.path import exists, isdir
+from fabric.api import put, sudo, env, local
 from datetime import datetime
 env.hosts = ["35.231.170.166", "54.83.91.228"]
+
+
+def do_pack():
+    now = datetime.utcnow()
+    vfl = "versions/web_static_{}{}{}{}{}{}.tgz".format(now.year,
+                                                        now.month,
+                                                        now.day,
+                                                        now.hour,
+                                                        now.minute,
+                                                        now.second)
+
+    if not isdir("versions"):
+        if local("mkdir -p versions").failed:
+            return None
+    if local('tar -cvzf {} web_static'.format(vfl)).failed:
+        return None
+    return vfl
 
 
 def do_deploy(archive_path):
