@@ -7,6 +7,6 @@ sudo mkdir -p /data/web_static/shared/
 echo "Im doing a simple test!" | sudo tee /data/web_static/releases/test/index.html
 sudo ln -sf /data/web_static/releases/test /data/web_static/current
 sudo chown -R ubuntu:ubuntu /data/
-sudo sed -i '38i\\tlocation /hbnb_static {\n\t\talias /data/web_static/current;\n\t\}\n' /etc/nginx/sites-available/def\
+sed -i '/:80 default_server/a \\tlocation /hbnb_static/ {\n\t\talias /data/web_static/current/;\n\t}' /etc/nginx/sites-available/default
 ault
 sudo service nginx restart
