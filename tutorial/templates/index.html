@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hola Mundo</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <script type="text/javascript" src="{{url_for('static', filename='js/main.js')}}"></script>
+</head>
+<body>
+    <h2>Hola {{username}}</h2>
+    <p>
+        Te encuentras en el curso {{course_name}}
+    </p>
+
+    {%if is_premium%}
+        <p>
+            El curso es premium
+        </p>
+    {%else%}
+        <p>
+            El curso es gratuito para todo el mundo
+        </p>
+    {%endif%}
+
+    {%if courses%}
+        <p>Listado de cursos:</p>
+        <ul>
+            {%for course in courses%}
+                <li>{{course}}</li>
+            {%endfor%}
+        </ul>
+    {%endif%}
+    <!-- {%if courses%}
+        <p>ejemplos:</p>
+        <ul>
+            {%for course in courses%}
+                <li>{{loop.index}} - {{course}}</li>
+            {%endfor%}
+        </ul>
+        <ul>
+            {%for course in courses%}
+                <li>{{loop.first}} - {{course}}</li>
+            {%endfor%}
+        </ul>
+        <ul>
+            {%for course in courses%}
+                <li>{{loop.last}} - {{course}}</li>
+            {%endfor%}
+        </ul>
+    {%endif%} -->
+
+</body>
+</html>
