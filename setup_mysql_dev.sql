@@ -1,4 +1,3 @@
-  
 -- Script that prepares a MySQL server for the project
 -- A database hbnb_dev_db, A new user hbnb_dev (in localhost)
 CREATE DATABASE IF NOT EXISTS hbnb_dev_db;
