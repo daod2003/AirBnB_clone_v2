@@ -10,6 +10,7 @@ from sqlalchemy.orm import relationship
 from models.place import Place
 import os
 
+
 class City(BaseModel, Base):
     """This is the class for City
     Attributes:

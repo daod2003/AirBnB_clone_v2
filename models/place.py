@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 """This is the place class"""
+
+
 import models
 from models.base_model import BaseModel, Base
 
@@ -50,7 +52,7 @@ class Place(BaseModel, Base):
     reviews = relationship("Review", backref="place")
     amenities = relationship("Amenity",
                              secondary=place_amenity,
-                                 viewonly=False)
+                             viewonly=False)
 
     if getenv('HBNB_TYPE_STORAGE') != 'db':
         @property

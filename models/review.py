@@ -12,6 +12,7 @@ from sqlalchemy import ForeignKey
 from sqlalchemy.orm import relationship
 import os
 
+
 class Review(BaseModel, Base):
     """This is the class for Review
     Attributes:

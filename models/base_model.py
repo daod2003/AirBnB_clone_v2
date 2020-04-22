@@ -23,21 +23,19 @@ class BaseModel:
     def __init__(self, *args, **kwargs):
         """Instantiation of base model class
         Args:
-            args: it won't be used
-            kwargs: arguments for the constructor of the BaseModel
+        args: it won't be used
+        kwargs: arguments for the constructor of the BaseModel
         Attributes:
-            id: unique id generated
-            created_at: creation date
-            updated_at: updated date
+        id: unique id generated
+        created_at: creation date
+        updated_at: updated date
         """
         if kwargs:
-            print('Hola babosa')
             for key, value in kwargs.items():
                 if key == "created_at" or key == "updated_at":
                     value = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
                 if key != "__class__":
                     setattr(self, key, value)
-            print('te odio')
             if self.id is None:
                 setattr(self, 'id', str(uuid.uuid4()))
             if self.created_at is None or self.updated_at is None:
@@ -49,7 +47,7 @@ class BaseModel:
     def __str__(self):
         """returns a string
         Return:
-            returns a string of class name, id, and dictionary
+        returns a string of class name, id, and dictionary
         """
         return "[{}] ({}) {}".format(
             type(self).__name__, self.id, self.__dict__)
