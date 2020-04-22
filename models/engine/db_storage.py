@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """This is the DB storage class for AirBnB"""
 import json
-from os import getenv
 from models.base_model import BaseModel, Base
 from models.user import User
 from models.state import State
@@ -9,6 +8,7 @@ from models.city import City
 from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
+from os import getenv
 import sqlalchemy
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, String, DateTime
@@ -77,3 +77,9 @@ class DBStorage:
         Session = sessionmaker(bind=self.__engine, expire_on_commit=False, )
         session = scoped_session(Session)
         self.__session = session
+
+    def close(self):
+        '''
+        call remove() method on the private session attribute
+        '''
+        self.__session.remove()
