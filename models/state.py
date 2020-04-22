@@ -16,14 +16,12 @@ class State(BaseModel, Base):
     Attributes:
         name: input name
     """
-    if models.storage_t == 'db':
-        __tablename__ = 'states'
-        name = Column(String(128), nullable=False)
+    __tablename__ = 'states'
+    name = Column(String(128), nullable=False)
+    if getenv('HBNB_TYPE_STORAGE') == 'db':
         cities = relationship('City', backref='state')
-    else:
-        name = ""
 
-    if models.storage_t != "db":
+    if getenv('HBNB_TYPE_STORAGE') != "db":
         @property
         def cities(self):
             """list of city instances related to the state"""
