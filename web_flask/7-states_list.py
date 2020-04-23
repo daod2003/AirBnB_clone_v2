@@ -10,7 +10,7 @@ app = Flask(__name__)
 
 
 @app.route('/states_list', strict_slashes=False)
-def listState():
+def states_list():
     """display all states in a HTML page sorted by A to Z"""
     states = sorted(list(storage.all("State").values()), key=lambda x: x.name)
     return render_template('7-states_list.html', states=states)
